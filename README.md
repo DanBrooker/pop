@@ -3,7 +3,7 @@
 
 I'm pretty sure you need a 1MB file of a's, perhaps a Gigabyte, why not a Terrabyte.
 
-## disclamer
+## disclaimer
 
 I have no idea how long it would take to allocate a Terrabyte or if your computer can actually handle it.
 
