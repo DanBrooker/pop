@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+# Populate a file with a precise number of bytes
+# MIT LICENCE
+#   Copyright 2013 NOCTURNAL CODE
+#
+# USAGE: 
+#   pop <size>[B,KB,MB,GB,TB] <filename>
+# Examples: 
+#   pop 1MB oneMegFile.txt
+#   pop 1 oneByteFile.txt
+#   pop 5.5GB fiveAndAHalfGigFile.txt
+
+def denomination_multiplier(unit)
+  # exponential = %w{B KB MB GB TB PB EB ZB YB}.index(unit.upcase) # probably don't need a YottaByte
+  exponential = %w{B KB MB GB TB}.index(unit.upcase)
+  exponential.nil? ? 1 : 1024 ** exponential # default to bytes if unrecogised unit
+end
+
+def usage
+  puts "USAGE: pop <size>[,B,KB,MB,GB,PB] <filename> [-t]"
+  puts ""
+  puts "       -h: display this help text"
+  puts "       -t: dummy test, don't write file"
+  puts ""
+end
+
+if ARGV[0] == "-h"
+  usage
+  exit 0
+end
+
+unless ARGV.length >= 1
+  usage
+  exit 1
+end
+
+size = ARGV[0]
+filename = ARGV[1]
+
+match = /(?<size>\d+\.?\d*)(?<denomination>\w*)/.match(size)
+bytes = match[:size].to_f
+bytes = (bytes * denomination_multiplier(match[:denomination])).to_i
+
+File.open(filename,"w+") do |f|
+  f.write "a" * bytes
+end unless ARGV[2] == "-t"
+
+puts "Populated #{filename} with #{bytes} byte#{"s" unless bytes==1}"
