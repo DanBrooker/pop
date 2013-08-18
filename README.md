@@ -1,11 +1,15 @@
 # pop
 ### pop some files into existence 
 
-I'm pretty sure you need a 1MB file of a's, perhaps a Gigabyte.
+I'm pretty sure you need a 1MB file of a's, perhaps a Gigabyte, why not a Terrabyte.
+
+## disclamer
+
+I have no idea how long it would take to allocate a Terrabyte or if your computer can actually handle it.
 
 ## install
 
-pop is a [shell script][bin], for creating files of a specific size.
+pop is a [ruby script][bin], for creating files of a specific size.
 Add it to your dotfiles or check out [mine][dotfiles].
 
 ## usage
@@ -22,10 +26,6 @@ Invoke help with `pop -h`.
 
     $ pop -h
     > USAGE: pop <size>[,B,KB,MB,GB] <filename>
-
-## disclamer
-
-I have no idea how long it would take to allocate a Petabyte or if your computer can actually handle it.
 
 [dotfiles]: https://github.com/danbrooker/dotfiles
 [bin]:      https://github.com/danbrooker/pop/blob/master/pop
